@@ -1,3 +1,5 @@
+add_compile_definitions(LCM_LOG_DEFAULT_ENABLED=1)
+
 include(FetchContent)
 FetchContent_Declare(
   googletest
@@ -25,6 +27,9 @@ if(BUILD_CONNMAN)
 
   add_executable(gconnman_serv_test gconnman_serv_test.cpp)
   target_link_libraries(gconnman_serv_test PRIVATE GConnmanDbus gtest_main)
+
+  add_executable(log_test log_test.cpp)
+  target_link_libraries(log_test PRIVATE GConnmanDbus gtest_main)
 
   install(
     TARGETS gconnman_clock_test gconnman_tech_test gconnman_serv_test
